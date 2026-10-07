@@ -1,0 +1,8 @@
+defaults:
+  - train_base
+  - _self_
+  - experiment: safedrive_vla_x0.2
+
+hydra:
+  run:
+    dir: work_dirs/safedrive_vla/${name}/${now:%Y_%m_%d_%H_%M_%S}

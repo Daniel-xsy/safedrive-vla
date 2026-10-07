@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# training and evaluation outputs
+work_dirs/
+wandb/
+lightning_logs/
+*.ckpt
+*.pt
+*.pth
+
+# data, pretrained weights and regenerated benchmark routes
+database/
+ckpts/
+benchmark/data/generated/
+
+# cluster logs
+*.out
+*.err
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store

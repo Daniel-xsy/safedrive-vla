@@ -1,0 +1,65 @@
+# @package _global_
+#
+# SafeDriveVLA (mode token + navigation-conditioned world-model dreaming)
+# trained on x0.2 of the PDM-Lite data: the setting of the paper's main results.
+# The world model is pre-trained with world_model/configs/world_model_x0.5.yaml.
+
+name: safedrive_vla_x0.2
+seed: 9876
+gpus: 8
+max_epochs: 14
+
+model:
+  variant: OpenGVLab/InternVL3-1B
+  lora_r: 32
+  lora_alpha: 64
+  lora_dropout: 0.1
+  lr: 3e-5
+  weight_decay: 0.1
+  use_mode_token: true
+  action_loss_weight: 1.0
+  mode_loss_weight: 1.0
+  path_loss_weight: 1.0
+  text_loss_weight: 0.5
+  path_head:
+    num_points: 20
+    hidden: 512
+  action_token:
+    codebook_path: safedrive_vla/assets/action_codebook.pkl
+    num_tokens: 2048
+    hz: 4.0
+    horizon: 10
+  world_model:
+    enabled: true
+    encoder_ckpt: ckpts/vjepa2/vitl.pt
+    predictor_ckpt: work_dirs/world_model_x0.5/latest.pt
+    action_input: action_anchor
+    action_anchor_path: safedrive_vla/assets/action_anchors.npz
+    rollout_steps: 5
+    projector_hidden: 256
+
+data:
+  data_root: database/simlingo
+  data_scale: 0.2
+  batch_size: 12
+  num_workers: 8
+  # SimLingo scenario buckets; driving and action-dreaming samples are mixed 50/50.
+  train_partitions:
+    all: 0.082
+    acceleration_negative_5: 0.03
+    acceleration_negative_1: 0.03
+    acceleration_positive_1: 0.03
+    acceleration_positive_5: 0.03
+    lateral_control_1_2: 0.12
+    lateral_control_higher_5: 0.12
+    start_from_stop: 0.07
+    vehicle_front: 0.04
+    vehicle_side: 0.08
+    leading_object_vehicle: 0.09
+    leading_object_traffic.stop: 0.07
+    leading_object_traffic.traffic_light: 0.07
+    leading_object_walker: 0.05
+    changed_route: 0.08
+    parkinglane: 0.008
+  train_partitions_action_dreaming:
+    all: 1.0

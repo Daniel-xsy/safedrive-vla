@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2790_LANG_REBUILT_LANE_CHANGE_RIGHT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="2477.24" y="3506.31" z="354.90" />
+      <position x="2477.74" y="3503.35" z="354.92" />
+      <position x="2478.24" y="3500.39" z="354.95" />
+      <position x="2478.74" y="3497.43" z="354.98" />
+      <position x="2479.24" y="3494.47" z="355.02" />
+      <position x="2479.73" y="3491.52" z="355.07" />
+      <position x="2480.23" y="3488.56" z="355.12" />
+      <position x="2480.73" y="3485.60" z="355.18" />
+      <position x="2481.23" y="3482.64" z="355.25" />
+      <position x="2481.73" y="3479.68" z="355.32" />
+      <position x="2482.23" y="3476.73" z="355.39" />
+      <position x="2482.73" y="3473.77" z="355.46" />
+      <position x="2483.23" y="3470.81" z="355.53" />
+      <position x="2483.73" y="3467.85" z="355.60" />
+      <position x="2484.23" y="3464.89" z="355.67" />
+      <position x="2487.44" y="3465.43" z="355.67" />
+      <position x="2487.94" y="3462.48" z="355.75" />
+      <position x="2488.44" y="3459.52" z="355.82" />
+      <position x="2488.94" y="3456.56" z="355.89" />
+      <position x="2489.43" y="3453.60" z="355.97" />
+      <position x="2489.93" y="3450.64" z="356.04" />
+      <position x="2490.43" y="3447.69" z="356.12" />
+      <position x="2490.93" y="3444.73" z="356.19" />
+      <position x="2491.43" y="3441.77" z="356.27" />
+      <position x="2491.93" y="3438.81" z="356.34" />
+      <position x="2488.73" y="3438.27" z="356.34" />
+      <position x="2489.23" y="3435.31" z="356.42" />
+      <position x="2489.73" y="3432.35" z="356.50" />
+      <position x="2490.23" y="3429.40" z="356.58" />
+      <position x="2490.73" y="3426.44" z="356.66" />
+      <position x="2491.23" y="3423.48" z="356.73" />
+      <position x="2491.73" y="3420.52" z="356.81" />
+      <position x="2492.23" y="3417.56" z="356.89" />
+      <position x="2492.73" y="3414.61" z="356.97" />
+      <position x="2493.23" y="3411.65" z="357.05" />
+      <position x="2493.72" y="3408.69" z="357.13" />
+      <position x="2494.22" y="3405.73" z="357.20" />
+      <position x="2494.72" y="3402.77" z="357.29" />
+      <position x="2495.22" y="3399.81" z="357.38" />
+      <position x="2495.72" y="3396.86" z="357.49" />
+      <position x="2496.22" y="3393.90" z="357.61" />
+      <position x="2496.72" y="3390.94" z="357.74" />
+      <position x="2497.22" y="3387.98" z="357.88" />
+      <position x="2497.72" y="3385.02" z="358.03" />
+      <position x="2498.22" y="3382.07" z="358.20" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>keep straight and set your speed to 13 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="13" tolerance_ms="1.5" />
+        <duration_meters>28.2</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="30.0" />
+        <text>change lanes toward the right</text>
+        <command_id>6</command_id>
+        <expected_behavior type="lane_change" direction="right" />
+        <duration_meters>30.3</duration_meters>
+      </instruction>
+      <instruction id="3" priority="primary">
+        <trigger type="distance_traveled" value="60.3" />
+        <text>switch to the left lane now</text>
+        <command_id>5</command_id>
+        <expected_behavior type="lane_change" direction="left" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="2477.2" y="3506.3" z="354.9" yaw="-80.4" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="20.0" fog_density="3.0" precipitation="30.0" precipitation_deposits="50.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="30.0" />
+      <weather cloudiness="20.0" fog_density="3.0" precipitation="30.0" precipitation_deposits="50.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="30.0" />
+    </weathers>
+  </route>
+</routes>

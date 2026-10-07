@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2143_LANG_REBUILT_TURN_LEFT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="256.79" y="5955.72" z="360.25" />
+      <position x="256.70" y="5952.73" z="360.32" />
+      <position x="256.62" y="5949.74" z="360.39" />
+      <position x="256.57" y="5946.74" z="360.46" />
+      <position x="256.53" y="5943.75" z="360.54" />
+      <position x="256.52" y="5940.76" z="360.61" />
+      <position x="256.52" y="5937.77" z="360.69" />
+      <position x="256.52" y="5934.77" z="360.77" />
+      <position x="256.53" y="5931.77" z="360.85" />
+      <position x="256.54" y="5928.77" z="360.93" />
+      <position x="256.54" y="5925.77" z="361.01" />
+      <position x="246.63" y="5915.89" z="361.22" />
+      <position x="243.63" y="5915.86" z="361.22" />
+      <position x="240.63" y="5915.84" z="361.21" />
+      <position x="237.63" y="5915.81" z="361.21" />
+      <position x="234.63" y="5915.78" z="361.20" />
+      <position x="231.63" y="5915.75" z="361.19" />
+      <position x="228.63" y="5915.73" z="361.19" />
+      <position x="225.63" y="5915.70" z="361.18" />
+      <position x="222.63" y="5915.67" z="361.18" />
+      <position x="219.63" y="5915.64" z="361.17" />
+      <position x="216.63" y="5915.61" z="361.16" />
+      <position x="213.63" y="5915.59" z="361.16" />
+      <position x="210.63" y="5915.56" z="361.15" />
+      <position x="207.63" y="5915.53" z="361.14" />
+      <position x="204.63" y="5915.50" z="361.13" />
+      <position x="201.63" y="5915.48" z="361.13" />
+      <position x="198.63" y="5915.45" z="361.12" />
+      <position x="195.63" y="5915.42" z="361.11" />
+      <position x="192.63" y="5915.39" z="361.10" />
+      <position x="189.63" y="5915.36" z="361.09" />
+      <position x="186.63" y="5915.34" z="361.08" />
+      <position x="183.63" y="5915.31" z="361.07" />
+      <position x="180.63" y="5915.28" z="361.07" />
+      <position x="177.63" y="5915.25" z="361.06" />
+      <position x="174.63" y="5915.23" z="361.05" />
+      <position x="171.63" y="5915.20" z="361.04" />
+      <position x="168.63" y="5915.17" z="361.03" />
+      <position x="165.63" y="5915.14" z="361.03" />
+      <position x="162.63" y="5915.11" z="361.02" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>stay straight and reach 6 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="6" tolerance_ms="1.5" />
+        <duration_meters>6.0</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="9.0" />
+        <text>go left at the next intersection</text>
+        <command_id>1</command_id>
+        <expected_behavior type="turn" direction="left" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="256.8" y="5955.7" z="360.2" yaw="-91.7" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="80.0" fog_density="3.0" precipitation="0.0" precipitation_deposits="50.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="20.0" wind_intensity="10.0" />
+      <weather cloudiness="80.0" fog_density="3.0" precipitation="0.0" precipitation_deposits="50.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="20.0" wind_intensity="10.0" />
+    </weathers>
+  </route>
+</routes>

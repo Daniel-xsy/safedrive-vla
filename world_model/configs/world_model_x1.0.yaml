@@ -1,0 +1,63 @@
+# Latent world model used by the full-data (x1.0) SafeDriveVLA:
+# trained on all SimLingo PDM-Lite routes for 20 epochs.
+
+data:
+  root: database/simlingo/data/simlingo
+  data_scale: 1.0
+  data_scale_seed: 0
+  splits:
+    - training_1_scenario
+    - training_3_scenarios
+    - training_parking_lane
+    - lb1_split
+  val_splits:
+    - validation_1_scenario
+    - validation_3_scenarios
+    - validation_parking_lane
+  val_route_frac: 0.10
+  val_seed: 0
+  num_frames: 6              # 2 Hz latents at [0, 0.5, ..., 2.5] s
+  tubelet_size: 2            # each latent: two consecutive 4 Hz frames
+  img_h: 256
+  img_w: 256
+  stride: 4
+  num_workers: 8
+
+model:
+  encoder_arch: vit_large
+  encoder_embed_dim: 1024
+  encoder_ckpt: ckpts/vjepa2/vitl.pt
+  img_h: 256
+  img_w: 256
+  patch_size: 16
+  num_frames: 12             # 6 latents x 2 frames
+  tubelet_size: 2
+  predictor_embed_dim: 512
+  predictor_depth: 8
+  predictor_num_heads: 8
+  predictor_mlp_ratio: 4.0
+  action_dim: 3
+  state_dim: 4
+
+train:
+  num_epochs: 20
+  batch_size: 8              # per GPU
+  seed: 239
+  lr: 4.25e-4
+  start_lr: 7.5e-5
+  final_lr: 0.0
+  beta2: 0.999
+  eps: 1.0e-8
+  weight_decay: 0.04
+  final_weight_decay: 0.04
+  warmup_epochs: 3
+  anneal_epochs: 5
+  auto_steps_start: 2        # autoregressive depth, ramped 2 -> 5
+  auto_steps_end: 5
+  auto_steps_ramp_frac: 0.4
+  log_every: 50
+  save_every: 5
+
+wandb:
+  enable: false
+  project: safedrive-vla

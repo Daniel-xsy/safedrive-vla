@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2913_LANG_REBUILT_TURN_STRAIGHT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="2929.60" y="2524.39" z="349.23" />
+      <position x="2926.60" y="2524.40" z="349.22" />
+      <position x="2923.60" y="2524.41" z="349.21" />
+      <position x="2920.60" y="2524.42" z="349.20" />
+      <position x="2917.60" y="2524.43" z="349.21" />
+      <position x="2914.60" y="2524.44" z="349.21" />
+      <position x="2911.60" y="2524.44" z="349.23" />
+      <position x="2908.60" y="2524.45" z="349.25" />
+      <position x="2905.60" y="2524.46" z="349.27" />
+      <position x="2902.60" y="2524.47" z="349.30" />
+      <position x="2881.60" y="2524.53" z="349.55" />
+      <position x="2878.60" y="2524.54" z="349.60" />
+      <position x="2875.60" y="2524.55" z="349.67" />
+      <position x="2872.60" y="2524.56" z="349.74" />
+      <position x="2869.60" y="2524.56" z="349.82" />
+      <position x="2866.60" y="2524.57" z="349.91" />
+      <position x="2863.60" y="2524.58" z="350.01" />
+      <position x="2860.60" y="2524.59" z="350.11" />
+      <position x="2857.60" y="2524.60" z="350.22" />
+      <position x="2854.60" y="2524.61" z="350.34" />
+      <position x="2851.60" y="2524.62" z="350.45" />
+      <position x="2848.60" y="2524.62" z="350.57" />
+      <position x="2845.60" y="2524.63" z="350.68" />
+      <position x="2842.60" y="2524.64" z="350.80" />
+      <position x="2839.60" y="2524.65" z="350.93" />
+      <position x="2836.60" y="2524.66" z="351.05" />
+      <position x="2833.60" y="2524.67" z="351.18" />
+      <position x="2830.60" y="2524.68" z="351.31" />
+      <position x="2827.60" y="2524.68" z="351.44" />
+      <position x="2824.60" y="2524.69" z="351.58" />
+      <position x="2821.60" y="2524.70" z="351.72" />
+      <position x="2818.60" y="2524.71" z="351.86" />
+      <position x="2815.60" y="2524.72" z="352.01" />
+      <position x="2812.60" y="2524.73" z="352.15" />
+      <position x="2809.60" y="2524.74" z="352.30" />
+      <position x="2806.60" y="2524.74" z="352.46" />
+      <position x="2803.60" y="2524.75" z="352.61" />
+      <position x="2800.60" y="2524.76" z="352.76" />
+      <position x="2797.60" y="2524.77" z="352.92" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>stay straight and reach 8 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="8" tolerance_ms="1.5" />
+        <duration_meters>10.7</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="12.0" />
+        <text>drive straight through the upcoming junction</text>
+        <command_id>3</command_id>
+        <expected_behavior type="turn" direction="straight" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="2929.6" y="2524.4" z="349.2" yaw="179.8" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="100.0" fog_density="3.0" precipitation="100.0" precipitation_deposits="90.0" route_percentage="0" sun_altitude_angle="-90.0" sun_azimuth_angle="-1.0" wetness="100.0" wind_intensity="100.0" />
+      <weather cloudiness="100.0" fog_density="3.0" precipitation="100.0" precipitation_deposits="90.0" route_percentage="100" sun_altitude_angle="-90.0" sun_azimuth_angle="-1.0" wetness="100.0" wind_intensity="100.0" />
+    </weathers>
+  </route>
+</routes>

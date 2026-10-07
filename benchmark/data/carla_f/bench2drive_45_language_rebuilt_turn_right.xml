@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2881_LANG_REBUILT_TURN_RIGHT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="39.57" y="4873.90" z="372.12" />
+      <position x="39.57" y="4870.90" z="372.12" />
+      <position x="39.56" y="4867.90" z="372.12" />
+      <position x="39.55" y="4864.90" z="372.12" />
+      <position x="39.54" y="4861.90" z="372.12" />
+      <position x="39.53" y="4858.90" z="372.12" />
+      <position x="39.53" y="4855.90" z="372.12" />
+      <position x="39.52" y="4852.90" z="372.12" />
+      <position x="39.51" y="4849.90" z="372.12" />
+      <position x="39.50" y="4846.90" z="372.13" />
+      <position x="46.51" y="4838.39" z="372.07" />
+      <position x="49.51" y="4838.40" z="372.05" />
+      <position x="52.51" y="4838.40" z="372.03" />
+      <position x="55.51" y="4838.41" z="372.01" />
+      <position x="58.51" y="4838.41" z="371.99" />
+      <position x="61.51" y="4838.41" z="371.97" />
+      <position x="64.51" y="4838.42" z="371.95" />
+      <position x="67.51" y="4838.42" z="371.93" />
+      <position x="70.51" y="4838.42" z="371.91" />
+      <position x="73.51" y="4838.43" z="371.89" />
+      <position x="76.51" y="4838.43" z="371.88" />
+      <position x="79.51" y="4838.43" z="371.86" />
+      <position x="82.51" y="4838.44" z="371.84" />
+      <position x="85.51" y="4838.44" z="371.82" />
+      <position x="88.51" y="4838.45" z="371.80" />
+      <position x="91.51" y="4838.45" z="371.78" />
+      <position x="94.51" y="4838.45" z="371.76" />
+      <position x="97.51" y="4838.46" z="371.75" />
+      <position x="100.51" y="4838.46" z="371.73" />
+      <position x="103.51" y="4838.46" z="371.71" />
+      <position x="106.51" y="4838.47" z="371.69" />
+      <position x="109.51" y="4838.47" z="371.68" />
+      <position x="112.51" y="4838.48" z="371.66" />
+      <position x="115.51" y="4838.48" z="371.64" />
+      <position x="118.51" y="4838.48" z="371.62" />
+      <position x="121.51" y="4838.49" z="371.61" />
+      <position x="124.51" y="4838.49" z="371.59" />
+      <position x="127.51" y="4838.49" z="371.57" />
+      <position x="130.51" y="4838.50" z="371.55" />
+      <position x="133.51" y="4838.50" z="371.54" />
+      <position x="136.51" y="4838.50" z="371.52" />
+      <position x="139.51" y="4838.51" z="371.50" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>continue straight and accelerate to 6 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="6" tolerance_ms="1.5" />
+        <duration_meters>6.0</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="6.0" />
+        <text>hang a right at the next junction</text>
+        <command_id>2</command_id>
+        <expected_behavior type="turn" direction="right" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="39.6" y="4873.9" z="372.1" yaw="-90.2" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="100.0" fog_density="10.0" precipitation="50.0" precipitation_deposits="100.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="80.0" wind_intensity="80.0" />
+      <weather cloudiness="100.0" fog_density="10.0" precipitation="50.0" precipitation_deposits="100.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="80.0" wind_intensity="80.0" />
+    </weathers>
+  </route>
+</routes>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="23658_LANG_REBUILT_LANE_FOLLOW" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="-822.57" y="4826.70" z="372.10" />
+      <position x="-822.57" y="4823.70" z="372.01" />
+      <position x="-822.58" y="4820.70" z="371.92" />
+      <position x="-822.58" y="4817.70" z="371.83" />
+      <position x="-822.59" y="4814.70" z="371.73" />
+      <position x="-822.59" y="4811.70" z="371.64" />
+      <position x="-822.60" y="4808.70" z="371.55" />
+      <position x="-822.61" y="4805.70" z="371.45" />
+      <position x="-822.61" y="4802.70" z="371.36" />
+      <position x="-822.71" y="4748.70" z="369.74" />
+      <position x="-822.71" y="4745.70" z="369.66" />
+      <position x="-822.72" y="4742.70" z="369.59" />
+      <position x="-822.72" y="4739.70" z="369.52" />
+      <position x="-822.73" y="4736.70" z="369.45" />
+      <position x="-822.73" y="4733.70" z="369.38" />
+      <position x="-822.74" y="4730.70" z="369.31" />
+      <position x="-822.75" y="4727.70" z="369.25" />
+      <position x="-822.75" y="4724.70" z="369.19" />
+      <position x="-822.76" y="4721.70" z="369.14" />
+      <position x="-822.76" y="4718.70" z="369.08" />
+      <position x="-822.77" y="4715.70" z="369.02" />
+      <position x="-822.77" y="4712.70" z="368.96" />
+      <position x="-822.80" y="4694.70" z="368.74" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>stay straight and reach 14 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="14" tolerance_ms="1.5" />
+        <duration_meters>32.7</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="33.0" />
+        <text>follow the road</text>
+        <command_id>4</command_id>
+        <expected_behavior type="lane_follow" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="-822.6" y="4826.7" z="372.1" yaw="-90.1" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="20.0" fog_density="3.0" precipitation="30.0" precipitation_deposits="50.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="30.0" />
+      <weather cloudiness="20.0" fog_density="3.0" precipitation="30.0" precipitation_deposits="50.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="30.0" />
+    </weathers>
+  </route>
+</routes>

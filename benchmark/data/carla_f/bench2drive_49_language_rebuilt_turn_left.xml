@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2989_LANG_REBUILT_TURN_LEFT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="1173.36" y="5249.00" z="371.22" />
+      <position x="1173.36" y="5252.00" z="371.21" />
+      <position x="1173.36" y="5255.00" z="371.21" />
+      <position x="1173.36" y="5258.00" z="371.20" />
+      <position x="1173.37" y="5261.00" z="371.19" />
+      <position x="1173.37" y="5264.00" z="371.19" />
+      <position x="1173.37" y="5267.00" z="371.18" />
+      <position x="1173.38" y="5270.00" z="371.17" />
+      <position x="1173.38" y="5273.00" z="371.16" />
+      <position x="1173.38" y="5276.00" z="371.16" />
+      <position x="1186.26" y="5287.89" z="371.09" />
+      <position x="1189.26" y="5287.86" z="371.08" />
+      <position x="1192.26" y="5287.84" z="371.07" />
+      <position x="1195.26" y="5287.82" z="371.06" />
+      <position x="1198.26" y="5287.80" z="371.05" />
+      <position x="1201.26" y="5287.78" z="371.04" />
+      <position x="1204.26" y="5287.76" z="371.03" />
+      <position x="1207.26" y="5287.74" z="371.02" />
+      <position x="1210.26" y="5287.72" z="371.01" />
+      <position x="1213.26" y="5287.70" z="371.00" />
+      <position x="1216.26" y="5287.68" z="370.99" />
+      <position x="1219.26" y="5287.65" z="370.98" />
+      <position x="1222.26" y="5287.63" z="370.97" />
+      <position x="1225.26" y="5287.61" z="370.96" />
+      <position x="1228.26" y="5287.59" z="370.95" />
+      <position x="1231.26" y="5287.57" z="370.94" />
+      <position x="1234.26" y="5287.55" z="370.93" />
+      <position x="1237.26" y="5287.53" z="370.92" />
+      <position x="1240.26" y="5287.51" z="370.91" />
+      <position x="1243.26" y="5287.49" z="370.90" />
+      <position x="1246.26" y="5287.47" z="370.89" />
+      <position x="1249.26" y="5287.44" z="370.88" />
+      <position x="1252.26" y="5287.42" z="370.87" />
+      <position x="1255.25" y="5287.40" z="370.86" />
+      <position x="1258.25" y="5287.38" z="370.85" />
+      <position x="1261.25" y="5287.36" z="370.85" />
+      <position x="1264.25" y="5287.34" z="370.84" />
+      <position x="1267.25" y="5287.32" z="370.83" />
+      <position x="1270.25" y="5287.30" z="370.82" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>continue straight and accelerate to 9 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="9" tolerance_ms="1.5" />
+        <duration_meters>13.5</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="15.0" />
+        <text>go left at the next intersection</text>
+        <command_id>1</command_id>
+        <expected_behavior type="turn" direction="left" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="1173.4" y="5249.0" z="371.2" yaw="89.9" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="40.0" fog_density="2.0" precipitation="0.0" precipitation_deposits="50.0" route_percentage="0" sun_altitude_angle="-90.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="10.0" />
+      <weather cloudiness="40.0" fog_density="2.0" precipitation="0.0" precipitation_deposits="50.0" route_percentage="100" sun_altitude_angle="-90.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="10.0" />
+    </weathers>
+  </route>
+</routes>

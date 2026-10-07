@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2050_LANG_REBUILT_TURN_RIGHT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="2496.30" y="2063.48" z="358.04" />
+      <position x="2499.30" y="2063.47" z="357.97" />
+      <position x="2502.30" y="2063.46" z="357.90" />
+      <position x="2505.30" y="2063.45" z="357.83" />
+      <position x="2508.30" y="2063.44" z="357.75" />
+      <position x="2511.30" y="2063.43" z="357.66" />
+      <position x="2514.30" y="2063.41" z="357.58" />
+      <position x="2517.30" y="2063.40" z="357.49" />
+      <position x="2520.30" y="2063.39" z="357.41" />
+      <position x="2523.30" y="2063.38" z="357.32" />
+      <position x="2537.10" y="2076.30" z="356.98" />
+      <position x="2537.10" y="2079.30" z="356.99" />
+      <position x="2537.10" y="2082.30" z="357.01" />
+      <position x="2537.11" y="2085.30" z="357.03" />
+      <position x="2537.11" y="2088.30" z="357.05" />
+      <position x="2537.11" y="2091.30" z="357.07" />
+      <position x="2537.12" y="2094.30" z="357.09" />
+      <position x="2537.12" y="2097.30" z="357.11" />
+      <position x="2537.13" y="2100.30" z="357.14" />
+      <position x="2537.13" y="2103.30" z="357.17" />
+      <position x="2537.13" y="2106.30" z="357.20" />
+      <position x="2537.14" y="2109.30" z="357.23" />
+      <position x="2537.14" y="2112.30" z="357.27" />
+      <position x="2537.14" y="2115.30" z="357.30" />
+      <position x="2537.15" y="2118.30" z="357.34" />
+      <position x="2537.15" y="2121.30" z="357.38" />
+      <position x="2537.16" y="2124.30" z="357.43" />
+      <position x="2537.16" y="2127.30" z="357.47" />
+      <position x="2537.16" y="2130.30" z="357.52" />
+      <position x="2537.17" y="2133.30" z="357.57" />
+      <position x="2537.17" y="2136.30" z="357.62" />
+      <position x="2537.17" y="2139.30" z="357.67" />
+      <position x="2537.18" y="2142.30" z="357.72" />
+      <position x="2537.18" y="2145.30" z="357.77" />
+      <position x="2537.19" y="2148.30" z="357.83" />
+      <position x="2537.19" y="2151.30" z="357.89" />
+      <position x="2537.19" y="2154.30" z="357.95" />
+      <position x="2537.20" y="2157.30" z="358.01" />
+      <position x="2537.20" y="2160.30" z="358.08" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>stay straight and reach 9 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="9" tolerance_ms="1.5" />
+        <duration_meters>13.5</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="15.0" />
+        <text>turn right at the upcoming junction</text>
+        <command_id>2</command_id>
+        <expected_behavior type="turn" direction="right" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="2496.3" y="2063.5" z="358.0" yaw="-0.2" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="100.0" fog_density="7.0" precipitation="100.0" precipitation_deposits="90.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="100.0" />
+      <weather cloudiness="100.0" fog_density="7.0" precipitation="100.0" precipitation_deposits="90.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="100.0" />
+    </weathers>
+  </route>
+</routes>

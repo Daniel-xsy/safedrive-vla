@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="2091_LANG_REBUILT_TURN_RIGHT" town="Town12" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="2773.27" y="1633.80" z="343.58" />
+      <position x="2773.26" y="1630.80" z="343.56" />
+      <position x="2773.26" y="1627.80" z="343.56" />
+      <position x="2773.25" y="1624.80" z="343.55" />
+      <position x="2773.24" y="1621.80" z="343.55" />
+      <position x="2773.23" y="1618.80" z="343.55" />
+      <position x="2773.22" y="1615.80" z="343.54" />
+      <position x="2773.21" y="1612.80" z="343.55" />
+      <position x="2773.20" y="1609.80" z="343.56" />
+      <position x="2784.93" y="1599.06" z="343.38" />
+      <position x="2787.93" y="1599.05" z="343.29" />
+      <position x="2790.93" y="1599.04" z="343.21" />
+      <position x="2793.93" y="1599.04" z="343.13" />
+      <position x="2796.93" y="1599.03" z="343.04" />
+      <position x="2799.93" y="1599.02" z="342.96" />
+      <position x="2802.93" y="1599.02" z="342.87" />
+      <position x="2805.93" y="1599.01" z="342.79" />
+      <position x="2808.93" y="1599.00" z="342.70" />
+      <position x="2811.93" y="1599.00" z="342.62" />
+      <position x="2814.93" y="1598.99" z="342.53" />
+      <position x="2817.93" y="1598.98" z="342.44" />
+      <position x="2820.93" y="1598.98" z="342.36" />
+      <position x="2823.93" y="1598.97" z="342.27" />
+      <position x="2826.93" y="1598.97" z="342.19" />
+      <position x="2829.93" y="1598.96" z="342.10" />
+      <position x="2832.93" y="1598.95" z="342.02" />
+      <position x="2835.93" y="1598.95" z="341.95" />
+      <position x="2838.93" y="1598.94" z="341.87" />
+      <position x="2841.93" y="1598.93" z="341.80" />
+      <position x="2844.93" y="1598.93" z="341.72" />
+      <position x="2847.93" y="1598.92" z="341.65" />
+      <position x="2850.93" y="1598.91" z="341.59" />
+      <position x="2853.93" y="1598.91" z="341.52" />
+      <position x="2856.93" y="1598.90" z="341.46" />
+      <position x="2859.93" y="1598.90" z="341.40" />
+      <position x="2862.93" y="1598.89" z="341.34" />
+      <position x="2865.93" y="1598.88" z="341.28" />
+      <position x="2868.93" y="1598.88" z="341.22" />
+      <position x="2871.93" y="1598.87" z="341.17" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>continue straight and accelerate to 8 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="8" tolerance_ms="1.5" />
+        <duration_meters>10.7</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="12.0" />
+        <text>hang a right at the next junction</text>
+        <command_id>2</command_id>
+        <expected_behavior type="turn" direction="right" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="2773.3" y="1633.8" z="343.6" yaw="-90.2" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="80.0" fog_density="3.0" precipitation="0.0" precipitation_deposits="50.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="20.0" wind_intensity="10.0" />
+      <weather cloudiness="80.0" fog_density="3.0" precipitation="0.0" precipitation_deposits="50.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="20.0" wind_intensity="10.0" />
+    </weathers>
+  </route>
+</routes>

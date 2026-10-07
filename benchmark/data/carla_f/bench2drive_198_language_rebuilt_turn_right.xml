@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<routes>
+  <route id="26990_LANG_REBUILT_TURN_RIGHT" town="Town03" benchmark_type="language_following" category="instruction_following" disable_bg_vehicle="true" force_all_green_traffic_lights="true">
+    <waypoints>
+      <position x="83.77" y="-93.50" z="8.00" />
+      <position x="83.88" y="-96.50" z="8.00" />
+      <position x="83.98" y="-99.50" z="8.00" />
+      <position x="84.09" y="-102.50" z="8.00" />
+      <position x="84.19" y="-105.49" z="8.00" />
+      <position x="84.30" y="-108.49" z="8.00" />
+      <position x="84.41" y="-111.49" z="8.00" />
+      <position x="84.51" y="-114.49" z="8.00" />
+      <position x="84.62" y="-117.49" z="8.00" />
+      <position x="84.72" y="-120.48" z="8.00" />
+      <position x="69.31" y="-136.79" z="7.87" />
+      <position x="66.31" y="-136.85" z="7.65" />
+      <position x="63.31" y="-136.92" z="7.34" />
+      <position x="60.31" y="-136.98" z="6.92" />
+      <position x="57.31" y="-137.04" z="6.40" />
+      <position x="54.31" y="-137.11" z="5.79" />
+      <position x="51.31" y="-137.17" z="5.14" />
+      <position x="48.31" y="-137.24" z="4.49" />
+      <position x="45.31" y="-137.30" z="3.84" />
+      <position x="42.31" y="-137.37" z="3.19" />
+      <position x="39.31" y="-137.43" z="2.55" />
+      <position x="36.31" y="-137.49" z="1.97" />
+      <position x="33.31" y="-137.56" z="1.47" />
+      <position x="30.31" y="-137.62" z="1.04" />
+      <position x="27.31" y="-137.69" z="0.69" />
+      <position x="24.32" y="-137.75" z="0.41" />
+      <position x="21.32" y="-137.82" z="0.20" />
+      <position x="10.25" y="-151.14" z="0.00" />
+      <position x="10.33" y="-154.14" z="0.00" />
+      <position x="10.40" y="-157.14" z="0.00" />
+      <position x="10.47" y="-160.14" z="0.00" />
+    </waypoints>
+    <instructions>
+      <instruction id="1" priority="primary">
+        <trigger type="distance_traveled" value="0.0" />
+        <text>continue straight and accelerate to 23 m/s</text>
+        <command_id>-1</command_id>
+        <expected_behavior type="target_speed" speed_ms="23" tolerance_ms="1.5" />
+        <duration_meters>88.2</duration_meters>
+      </instruction>
+      <instruction id="2" priority="primary">
+        <trigger type="distance_traveled" value="90.3" />
+        <text>turn right at the upcoming junction</text>
+        <command_id>2</command_id>
+        <expected_behavior type="turn" direction="right" />
+        <duration_meters>-1</duration_meters>
+      </instruction>
+    </instructions>
+    <evaluation>
+      <metric type="collision_check">
+        <param name="expect_collision" value="false" />
+      </metric>
+      <metric type="instruction_compliance">
+        <param name="compliance_threshold" value="0.8" />
+      </metric>
+    </evaluation>
+    <scenarios>
+      <scenario name="FreeRide_1" type="FreeRide">
+        <trigger_point x="83.8" y="-93.5" z="8.0" yaw="-88.0" />
+      </scenario>
+    </scenarios>
+    <weathers>
+      <weather cloudiness="100.0" fog_density="50.0" precipitation="60.0" precipitation_deposits="60.0" route_percentage="0" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="60.0" />
+      <weather cloudiness="100.0" fog_density="50.0" precipitation="60.0" precipitation_deposits="60.0" route_percentage="100" sun_altitude_angle="45.0" sun_azimuth_angle="-1.0" wetness="0.0" wind_intensity="60.0" />
+    </weathers>
+  </route>
+</routes>
