@@ -9,8 +9,8 @@ the ego completes a turn or lane-change instruction, the prompt falls back to
 
 The action anchor of world-model dreaming is indexed by the meta-command
 parsed from the instruction text (``instruction_meta_commands.json``, the
-paraphrase pools of the benchmark). Target-speed instructions name no maneuver;
-the world model then extrapolates the recent ego motion.
+paraphrase pools of the benchmark). Target-speed instructions name no maneuver
+and use ``follow_road``, the anchor their frames get in training.
 """
 
 from __future__ import annotations
@@ -36,6 +36,7 @@ NAVIGATION_COMMANDS = {1, 2, 3, 5, 6}   # route-planner commands of maneuver ins
 LANE_FOLLOW_COMMAND = 4
 COMPLETION_MIN_PROGRESS_M = 3.0
 SCENARIO_ACTIVE_DISTANCE_M = 30.0
+_SPEED_RE = re.compile(r"(-?\d+(?:\.\d+)?)\s*m\s*/\s*s", re.IGNORECASE)
 _WS_RE = re.compile(r"\s+")
 
 
@@ -198,5 +199,9 @@ class SafeDriveLanguageAgent(SafeDriveAgent):
     def anchor_meta_command(self) -> int:
         """Meta-command parsed from the instruction text."""
         text = (self.current_instruction.text if self.current_instruction is not None else self.instruction).strip()
-        meta = self.instruction_meta_commands.get(_normalize(text), self.UNKNOWN_META_COMMAND)
+        meta = self.instruction_meta_commands.get(_normalize(text))
+        if meta is None and _SPEED_RE.search(text):
+            meta = "follow_road"
+        if meta is None:
+            meta = self.UNKNOWN_META_COMMAND
         return META_COMMAND_TO_INDEX[meta] if meta is not None else -1

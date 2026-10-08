@@ -11,8 +11,9 @@ Every tick the agent
   4. steers along the path-head prediction (lateral PID) and tracks the speed of
      the action-token trajectory (longitudinal PID).
 
-The action anchor is indexed by the route-planner command of the current
-target point.
+The action anchor is indexed with the route-planner command of the previous
+target point, the same command that labels the training frames: the PDM-Lite
+expert records ``command`` one target point late.
 
 Sensor setup, state estimation and controllers are adapted from the SimLingo
 agent (https://github.com/RenzKa/simlingo, Apache-2.0).
@@ -167,7 +168,6 @@ class SafeDriveAgent(autonomous_agent.AutonomousAgent):
         # Route-planner commands of the current and the previous target point.
         self.commands = deque([4, 4], maxlen=2)
         self.next_commands = deque([4, 4], maxlen=2)
-        self.far_command = 4  # route-planner command of the current target point
         self.target_point_prev = [1e5, 1e5, 1e5]
         self.control = carla.VehicleControl(steer=0.0, throttle=0.0, brake=1.0)
 
@@ -221,7 +221,7 @@ class SafeDriveAgent(autonomous_agent.AutonomousAgent):
 
     def anchor_meta_command(self) -> int:
         """Meta-command that indexes the action anchor (-1: none)."""
-        meta = COMMAND_TO_META_COMMAND.get(self.far_command)
+        meta = COMMAND_TO_META_COMMAND.get(int(self.commands[-2]))
         return META_COMMAND_TO_INDEX[meta] if meta is not None else -1
 
     # ------------------------------------------------------------------
@@ -248,7 +248,6 @@ class SafeDriveAgent(autonomous_agent.AutonomousAgent):
         target_point, far_command = route[min(1, len(route) - 1)]
         next_target_point, next_far_command = route[min(2, len(route) - 1)]
         self.on_route_command(int(getattr(route[0][1], "value", route[0][1])))
-        self.far_command = int(far_command.value)
         if (target_point != self.target_point_prev).all():
             self.target_point_prev = target_point
             self.commands.append(far_command.value)
