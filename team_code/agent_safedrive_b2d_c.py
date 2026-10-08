@@ -12,6 +12,7 @@ that name a maneuver, ignoring any requested speed
 (``conflict_instruction_meta_commands.json``): a left / right turn, a lane
 change to the left / right lane, or going straight through an intersection or
 junction. Any other instruction, including speed-only ones, is ``follow_road``.
+The table is built by ``benchmark/generation/build_conflict_meta_commands.py``.
 """
 
 from pathlib import Path
