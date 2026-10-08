@@ -55,25 +55,27 @@ The `carla` Python client is installed by `requirements.txt`, and the evaluation
   wget -c -P ckpts/vjepa2 https://dl.fbaipublicfiles.com/vjepa2/vitl.pt
   ```
 
-- **InternVL3-1B**, the VLM backbone, is downloaded from Hugging Face ([OpenGVLab/InternVL3-1B-hf](https://huggingface.co/OpenGVLab/InternVL3-1B-hf)) on first use. On machines without internet access, download it in advance:
+- **InternVL3-1B**, the VLM backbone, is downloaded from Hugging Face ([OpenGVLab/InternVL3-1B-hf](https://huggingface.co/OpenGVLab/InternVL3-1B-hf), at the revision pinned in `safedrive_vla/models/backbone.py`) on first use. On machines without internet access, download it in advance:
 
   ```bash
-  hf download OpenGVLab/InternVL3-1B-hf
+  hf download OpenGVLab/InternVL3-1B-hf --revision 014c0583a0d4bedf29fbe2dbff4f865eb998e171
   ```
 
 ### Data Preparation
 
 #### SimLingo PDM-Lite Dataset
 
-The world model and SafeDriveVLA are trained on the CARLA dataset that [SimLingo](https://github.com/RenzKa/simlingo) collected with the PDM-Lite expert ([RenzKa/simlingo](https://huggingface.co/datasets/RenzKa/simlingo) on Hugging Face). The dataset is large, so check your disk space first. Download it and extract all archives into `database/simlingo`:
+The world model and SafeDriveVLA are trained on the CARLA dataset that [SimLingo](https://github.com/RenzKa/simlingo) collected with the PDM-Lite expert ([RenzKa/simlingo](https://huggingface.co/datasets/RenzKa/simlingo) on Hugging Face). SafeDriveVLA uses its driving frames (`data`), its action-dreaming instructions (`dreamer`) and the scenario buckets for balanced sampling (`buckets_paths.pkl`); the `commentary` and `drivelm` archives are not needed. The driving-mode labels are derived from these data during training. The dataset is large, so check your disk space first:
 
 ```bash
-hf download --repo-type dataset RenzKa/simlingo --local-dir database/download
+hf download --repo-type dataset RenzKa/simlingo --local-dir database/download \
+    --include "data_*" --include "dreamer_*" --include "buckets_paths.pkl"
 mkdir -p database/simlingo
 for f in database/download/*.tar.gz; do tar -xzf "$f" -C database/simlingo; done
+mv database/download/buckets_paths.pkl database/simlingo/
 ```
 
-SafeDriveVLA uses `data/` (camera frames and measurements), `dreamer/` (action-dreaming instructions) and `buckets_paths.pkl` (scenario buckets for balanced sampling). `commentary/` and `drivelm/` are not used. To keep the dataset on another disk, link it into the repository with `ln -s /path/to/database database`.
+To keep the dataset on another disk, link it into the repository with `ln -s /path/to/database database`.
 
 #### Benchmarks
 

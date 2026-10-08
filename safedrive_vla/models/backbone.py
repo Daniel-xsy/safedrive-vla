@@ -10,6 +10,10 @@ from transformers import AutoConfig, AutoModelForImageTextToText, AutoProcessor
 from safedrive_vla.action_tokenizer import action_token_strings
 from safedrive_vla.constants import SPECIAL_TOKENS
 
+# Hugging Face revisions the released models were trained with: the trained
+# checkpoints store only the fine-tuned parameters on top of these weights.
+MODEL_REVISIONS = {"OpenGVLab/InternVL3-1B-hf": "014c0583a0d4bedf29fbe2dbff4f865eb998e171"}
+
 
 def resolve_model_id(variant: str) -> str:
     """``OpenGVLab/InternVL3-1B`` -> its Hugging Face port ``OpenGVLab/InternVL3-1B-hf``."""
@@ -31,7 +35,8 @@ def extend_vocabulary(tokenizer, num_action_tokens: int) -> int:
 
 def load_processor(variant: str, num_action_tokens: int) -> Tuple[object, int]:
     """Processor with the extended vocabulary, and the id of ``<action_0>``."""
-    processor = AutoProcessor.from_pretrained(resolve_model_id(variant), trust_remote_code=True)
+    model_id = resolve_model_id(variant)
+    processor = AutoProcessor.from_pretrained(model_id, revision=MODEL_REVISIONS.get(model_id), trust_remote_code=True)
     action_start_id = extend_vocabulary(processor.tokenizer, num_action_tokens)
     processor.tokenizer.padding_side = "left"
     return processor, action_start_id
@@ -39,8 +44,11 @@ def load_processor(variant: str, num_action_tokens: int) -> Tuple[object, int]:
 
 def load_vlm(variant: str, dtype: torch.dtype = torch.bfloat16):
     model_id = resolve_model_id(variant)
-    hf_config = AutoConfig.from_pretrained(model_id, trust_remote_code=True)
-    model = AutoModelForImageTextToText.from_pretrained(model_id, config=hf_config, trust_remote_code=True, dtype=dtype)
+    revision = MODEL_REVISIONS.get(model_id)
+    hf_config = AutoConfig.from_pretrained(model_id, revision=revision, trust_remote_code=True)
+    model = AutoModelForImageTextToText.from_pretrained(
+        model_id, config=hf_config, revision=revision, trust_remote_code=True, dtype=dtype
+    )
     return model, hf_config
 
 

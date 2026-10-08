@@ -85,12 +85,17 @@ def command_prompt(command: int, next_command: int, dist_to_command: int) -> str
 
 
 def load_policy(checkpoint: str, device: torch.device):
-    """Load a training checkpoint (DeepSpeed directory or file) together with
-    the ``.hydra/config.yaml`` of its run directory."""
+    """Load a checkpoint (DeepSpeed directory or file) and its config: the
+    ``config.yaml`` next to it (released models) or the ``.hydra/config.yaml``
+    of its training run directory."""
     checkpoint = Path(checkpoint)
-    cfg = OmegaConf.load(checkpoint.parent.parent / ".hydra" / "config.yaml")
-    for key in ("encoder_ckpt", "predictor_ckpt", "action_anchor_path"):
-        cfg.model.world_model[key] = _repo_path(cfg.model.world_model[key])
+    config = checkpoint.parent / "config.yaml"
+    if not config.exists():
+        config = checkpoint.parent.parent / ".hydra" / "config.yaml"
+    cfg = OmegaConf.load(config)
+    if cfg.model.get("world_model") is not None:
+        for key in ("encoder_ckpt", "predictor_ckpt", "action_anchor_path"):
+            cfg.model.world_model[key] = _repo_path(cfg.model.world_model[key])
     cfg.model.action_token.codebook_path = _repo_path(cfg.model.action_token.codebook_path)
 
     processor, _ = load_processor(cfg.model.variant, int(cfg.model.action_token.num_tokens))
@@ -136,14 +141,15 @@ class SafeDriveAgent(autonomous_agent.AutonomousAgent):
         self.frame_subsample = int(round(self.config.carla_fps / float(cfg.model.action_token.hz)))  # 4 Hz
 
         # ---- world-model dreaming ------------------------------------
-        wm = cfg.model.world_model
-        self.wm_enabled = bool(wm.enabled)
-        self.wm_size = int(wm.img_size)
-        self.wm_steps = int(wm.rollout_steps)
-        self.wm_action_input = str(wm.action_input)
+        wm = cfg.model.get("world_model")
+        self.wm_enabled = wm is not None
         self.action_anchors = None
-        if self.wm_enabled and self.wm_action_input == "action_anchor":
-            self.action_anchors = load_action_anchors(wm.action_anchor_path, self.wm_steps)
+        if self.wm_enabled:
+            self.wm_size = int(wm.img_size)
+            self.wm_steps = int(wm.rollout_steps)
+            self.wm_action_input = str(wm.action_input)
+            if self.wm_action_input == "action_anchor":
+                self.action_anchors = load_action_anchors(wm.action_anchor_path, self.wm_steps)
         # 2.5 s of 4 Hz speed / heading history and the last two 4 Hz frames.
         self.wm_speeds = deque(maxlen=11)
         self.wm_thetas = deque(maxlen=11)

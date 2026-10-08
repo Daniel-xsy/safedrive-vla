@@ -4,7 +4,8 @@
 #   bash scripts/eval.sh <benchmark> <checkpoint> [options]
 #
 #   benchmark:    bench2drive | carla_f | b2d_c | b2d_adv
-#   checkpoint:   work_dirs/safedrive_vla/<experiment>/<timestamp>/checkpoints/epoch=013.ckpt
+#   checkpoint:   a released model (<model>/<checkpoint>, config.yaml next to it) or a
+#                 training checkpoint work_dirs/safedrive_vla/<experiment>/<timestamp>/checkpoints/epoch=013.ckpt
 #   --gpu-ids 0,1,...           GPUs to use (default: all visible GPUs)
 #   --nav-signal NAME           Bench2Drive navigation signal: target_point (default) | command
 #   --output-dir DIR            default: work_dirs/eval/<benchmark>/<experiment>
@@ -44,7 +45,12 @@ if [[ -z "${GPU_IDS}" ]]; then
   GPU_IDS="$(seq -s, 0 $(( $(nvidia-smi -L | grep -c '^GPU ') - 1 )))"
 fi
 if [[ -z "${OUTPUT_DIR}" ]]; then
-  EXPERIMENT="$(basename "$(dirname "$(dirname "$(dirname "$(realpath "${CHECKPOINT}")")")")")"
+  CKPT_DIR="$(dirname "$(realpath "${CHECKPOINT}")")"
+  if [[ -f "${CKPT_DIR}/config.yaml" ]]; then
+    EXPERIMENT="$(basename "${CKPT_DIR}")"                            # released model
+  else
+    EXPERIMENT="$(basename "$(dirname "$(dirname "${CKPT_DIR}")")")"  # training run
+  fi
   OUTPUT_DIR="work_dirs/eval/${BENCHMARK}/${EXPERIMENT}"
   [[ "${BENCHMARK}" == bench2drive && "${SAFEDRIVE_NAV_SIGNAL}" == command ]] && OUTPUT_DIR="${OUTPUT_DIR}_command"
 fi
