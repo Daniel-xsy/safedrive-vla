@@ -57,8 +57,8 @@ def driving_efficiency(records) -> float:
 
 
 def comfortness(viz_dir: Path, route_names) -> float:
-    """Bench2Drive Driving Smoothness from the per-tick ego state of each route
-    (latest attempt only)."""
+    """Bench2Drive Driving Smoothness (%) from the per-tick ego state of each
+    route (latest attempt only)."""
     scores = []
     for name in route_names:
         runs = sorted((viz_dir / name).glob("*/metric_info.json"))
@@ -71,7 +71,7 @@ def comfortness(viz_dir: Path, route_names) -> float:
         frames = sorted(info, key=int)
         arrays = {f: np.array([info[k][f] for k in frames]) for f in _METRIC_FIELDS}
         scores.append(float(seg_compute_comfort_metric(**arrays)))
-    return float(np.mean(scores)) if scores else float("nan")
+    return 100.0 * float(np.mean(scores)) if scores else float("nan")
 
 
 def evaluate(output_dir: Path, num_routes: int) -> dict:

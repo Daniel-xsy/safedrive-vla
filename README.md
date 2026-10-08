@@ -100,7 +100,7 @@ The route files are in [`benchmark/data`](benchmark/data), the generation toolki
 
 ## Main Results
 
-\* trained with the ×0.2 data scale.
+SafeDriveVLA is trained on the full PDM-Lite data. The Bench2Drive results of SimLingo are taken from its paper.
 
 <details open>
 <summary><b>Bench2Drive</b></summary>
@@ -108,14 +108,16 @@ The route files are in [`benchmark/data`](benchmark/data), the generation toolki
 | Method | Nav. | Expert | DS ↑ | SR (%) ↑ | Efficiency ↑ | Comfortness ↑ |
 | :-- | :-: | :-: | :-: | :-: | :-: | :-: |
 | UniAD | CMD | Think2Drive | 45.81 | 16.36 | 129.21 | 43.58 |
-| VAD | CMD | Think2Drive | 42.35 | 15.00 | 157.94 | 46.01 |
+| VAD | CMD | Think2Drive | 42.35 | 15.00 | 157.94 | **46.01** |
 | ReCogDrive | CMD | Think2Drive | 71.36 | 45.45 | 138.18 | 17.45 |
 | ORION | CMD | Think2Drive | 77.74 | 54.62 | 151.48 | 17.38 |
 | MindDrive | CMD | Think2Drive | 78.04 | 55.09 | - | - |
 | AutoVLA | Lan | PDM-Lite | 78.84 | 57.73 | 146.93 | 39.33 |
 | DriveMoE | WP | Think2Drive | 74.22 | 48.64 | 175.96 | 15.31 |
-| SimLingo* | WP | PDM-Lite | 81.48 | 53.66 | 246.01 | 42.33 |
-| **SafeDriveVLA\*** | WP | PDM-Lite | **83.64** | **59.82** | **260.67** | **52.48** |
+| SimLingo | CMD | PDM-Lite | 86.08 | 65.78 | - | - |
+| SimLingo | WP | PDM-Lite | 85.07 | 67.27 | 259.23 | 33.67 |
+| **SafeDriveVLA** | CMD | PDM-Lite | 87.29 | 68.18 | 263.51 | 31.34 |
+| **SafeDriveVLA** | WP | PDM-Lite | **88.16** | **68.64** | **264.51** | 30.14 |
 
 </details>
 
@@ -130,7 +132,7 @@ The route files are in [`benchmark/data`](benchmark/data), the generation toolki
 | SimLingo | Lan | 1.44 | 83.6 | 80.4 | 45.9 | 0.0 | 0.0 | 63.8 | 52.4 |
 | SimLingo-IF | Lan | 1.31 | 89.1 | 82.3 | 49.4 | 0.0 | 0.0 | 69.0 | 55.6 |
 | SimLingo-Safe | Lan | 1.67 | 92.7 | 84.3 | 50.6 | 0.0 | 0.0 | 62.1 | 55.6 |
-| **SafeDriveVLA\*** | Lan | 4.27 | 87.8 | 98.0 | 89.0 | 66.7 | 72.4 | 82.5 | 82.7 |
+| **SafeDriveVLA** | Lan | 4.28 | 92.7 | 90.2 | 84.7 | 63.6 | 72.4 | 81.0 | 83.0 |
 
 Avg. is weighted by the number of instructions per meta-command and excludes speed.
 
@@ -144,7 +146,7 @@ Avg. is weighted by the number of instructions per meta-command and excludes spe
 | SimLingo | 72.8 | 36.7 | 66 | 60 | 18 |
 | SimLingo-IF | 56.3 | 12.7 | 166 | 57 | 32 |
 | SimLingo-Safe | 72.8 | 38.0 | 60 | 61 | 11 |
-| **SafeDriveVLA\*** | 67.3 | 35.8 | **45** | **9** | **1** |
+| **SafeDriveVLA** | **85.9** | **67.3** | **38** | **9** | **4** |
 
 </details>
 
@@ -154,7 +156,7 @@ Avg. is weighted by the number of instructions per meta-command and excludes spe
 | Model | without attack ↑ | B2D-Adv ↑ |
 | :-- | :-: | :-: |
 | SimLingo | 71.6 | 43.8 |
-| **SafeDriveVLA\*** | **82.8** | **78.4** |
+| **SafeDriveVLA** | **94.7** | **85.9** |
 
 </details>
 
