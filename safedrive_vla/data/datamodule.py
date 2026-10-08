@@ -61,7 +61,7 @@ class SafeDriveDataModule(LightningDataModule):
         self.num_workers = num_workers
         self.partitions = [dict(train_partitions), dict(train_partitions_action_dreaming)]
         self.world_model = dict(world_model or {})
-        self.wm_enabled = bool(self.world_model.get("enabled", False))
+        self.wm_enabled = bool(self.world_model)
         self.dataset_kwargs = dict(
             data_root=data_root,
             data_scale=data_scale,

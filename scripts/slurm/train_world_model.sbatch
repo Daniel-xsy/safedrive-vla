@@ -2,7 +2,7 @@
 # Slurm wrapper of scripts/train_world_model.sh (one node). Activate the conda
 # environment before submitting; add -p/-A/-t for your cluster, e.g.
 #
-#   sbatch -p <partition> scripts/slurm/train_world_model.sbatch world_model/configs/world_model_x0.5.yaml
+#   sbatch -p <partition> scripts/slurm/train_world_model.sbatch world_model/configs/world_model.yaml
 #
 #SBATCH --job-name=safedrive-wm
 #SBATCH --nodes=1

@@ -2,7 +2,7 @@
 
 Usage (from the repository root)::
 
-    python -m safedrive_vla.train experiment=safedrive_vla_x0.2 [hydra overrides]
+    python -m safedrive_vla.train experiment=safedrive_vla [hydra overrides]
 
 Outputs go to ``work_dirs/safedrive_vla/<name>/<timestamp>/`` (``.hydra/``
 config and ``checkpoints/epoch=XXX.ckpt``).
@@ -40,8 +40,9 @@ def main(cfg: TrainConfig) -> None:
         return path if path is None or os.path.isabs(path) else os.path.join(root, path)
 
     cfg.model.action_token.codebook_path = abspath(cfg.model.action_token.codebook_path)
-    for key in ("encoder_ckpt", "predictor_ckpt", "action_anchor_path"):
-        cfg.model.world_model[key] = abspath(cfg.model.world_model[key])
+    if cfg.model.world_model is not None:
+        for key in ("encoder_ckpt", "predictor_ckpt", "action_anchor_path"):
+            cfg.model.world_model[key] = abspath(cfg.model.world_model[key])
     if cfg.resume_path:
         cfg.resume_path = abspath(cfg.resume_path)
 
@@ -58,7 +59,7 @@ def main(cfg: TrainConfig) -> None:
         train_partitions=OmegaConf.to_container(cfg.data.train_partitions),
         train_partitions_action_dreaming=OmegaConf.to_container(cfg.data.train_partitions_action_dreaming),
         use_mode_token=cfg.model.use_mode_token,
-        world_model=OmegaConf.to_container(cfg.model.world_model, resolve=True),
+        world_model=OmegaConf.to_container(cfg.model.world_model, resolve=True) if cfg.model.world_model is not None else None,
     )
     model = hydra.utils.instantiate(cfg.model, processor=processor, _recursive_=False)
     if cfg.resume_path:

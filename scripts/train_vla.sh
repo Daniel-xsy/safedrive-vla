@@ -2,7 +2,7 @@
 # Train SafeDriveVLA on one node.
 #
 #   [NUM_GPUS=8] bash scripts/train_vla.sh <experiment> [hydra overrides...]
-#   bash scripts/train_vla.sh safedrive_vla_x0.2
+#   bash scripts/train_vla.sh safedrive_vla
 #
 # Experiments live in safedrive_vla/configs/experiment/. Outputs go to
 # work_dirs/safedrive_vla/<experiment>/<timestamp>/. With RESUME=1 training

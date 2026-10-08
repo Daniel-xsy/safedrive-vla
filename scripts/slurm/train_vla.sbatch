@@ -2,7 +2,7 @@
 # Slurm wrapper of scripts/train_vla.sh (one node). Activate the conda
 # environment before submitting; add -p/-A/-t for your cluster, e.g.
 #
-#   sbatch -p <partition> scripts/slurm/train_vla.sbatch safedrive_vla_x0.2
+#   sbatch -p <partition> scripts/slurm/train_vla.sbatch safedrive_vla
 #
 # Resubmit with RESUME=1 to continue from the last complete epoch.
 #

@@ -1,4 +1,4 @@
-# Latent world model used by the full-data (x1.0) SafeDriveVLA:
+# Latent world model used by SafeDriveVLA (full data):
 # trained on all SimLingo PDM-Lite routes for 20 epochs.
 
 data:

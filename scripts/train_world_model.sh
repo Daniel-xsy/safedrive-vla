@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Pre-train the latent world model on one node.
 #
-#   [NUM_GPUS=8] bash scripts/train_world_model.sh world_model/configs/world_model_x0.5.yaml
+#   [NUM_GPUS=8] bash scripts/train_world_model.sh world_model/configs/world_model.yaml
 #
 # The batch size in the config is per GPU (8 GPUs in the paper). Checkpoints go
 # to work_dirs/<config name>/; rerunning the command resumes from latest.pt.

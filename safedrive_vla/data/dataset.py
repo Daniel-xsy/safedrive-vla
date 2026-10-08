@@ -172,7 +172,7 @@ class _SafeDriveSampleMixin:
         self.use_mode_token = bool(use_mode_token)
 
         wm = dict(world_model or {})
-        self.wm_enabled = bool(wm.get("enabled", False))
+        self.wm_enabled = bool(wm)
         self.wm_image_size = (int(wm.get("img_size", 256)), int(wm.get("img_size", 256)))
         self.wm_rollout_steps = int(wm.get("rollout_steps", 5))
         self.wm_action_input = str(wm.get("action_input", "action_anchor"))

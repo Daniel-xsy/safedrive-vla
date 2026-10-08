@@ -1,7 +1,7 @@
 defaults:
   - train_base
   - _self_
-  - experiment: safedrive_vla_x0.2
+  - experiment: safedrive_vla
 
 hydra:
   run:

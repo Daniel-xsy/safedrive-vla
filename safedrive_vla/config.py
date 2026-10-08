@@ -18,7 +18,6 @@ class ActionTokenConfig:
 
 @dataclass
 class WorldModelConfig:
-    enabled: bool = True
     encoder_ckpt: Optional[str] = "ckpts/vjepa2/vitl.pt"
     predictor_ckpt: Optional[str] = None
     # Action sequence the world model dreams under (Fig. 3c):
@@ -67,7 +66,8 @@ class ModelConfig:
     betas: Tuple[float, float] = (0.9, 0.999)
     pct_start: float = 0.05
     action_token: ActionTokenConfig = field(default_factory=ActionTokenConfig)
-    world_model: WorldModelConfig = field(default_factory=WorldModelConfig)
+    # navigation-conditioned world-model dreaming; leave unset for a model without it
+    world_model: Optional[WorldModelConfig] = None
 
 
 @dataclass

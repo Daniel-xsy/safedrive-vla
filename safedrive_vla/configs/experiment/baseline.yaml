@@ -1,10 +1,9 @@
 # @package _global_
 #
-# SafeDriveVLA (mode token + navigation-conditioned world-model dreaming)
-# trained on all of the PDM-Lite data (x1.0).
-# The world model is pre-trained with world_model/configs/world_model_x1.0.yaml.
+# Baseline without the mode token and the world model, trained on all of the
+# PDM-Lite data. Ablation of SafeDriveVLA.
 
-name: safedrive_vla_x1.0
+name: baseline
 seed: 9876
 gpus: 8
 max_epochs: 14
@@ -16,7 +15,7 @@ model:
   lora_dropout: 0.1
   lr: 3e-5
   weight_decay: 0.1
-  use_mode_token: true
+  use_mode_token: false
   action_loss_weight: 1.0
   mode_loss_weight: 1.0
   path_loss_weight: 1.0
@@ -29,14 +28,6 @@ model:
     num_tokens: 2048
     hz: 4.0
     horizon: 10
-  world_model:
-    enabled: true
-    encoder_ckpt: ckpts/vjepa2/vitl.pt
-    predictor_ckpt: work_dirs/world_model_x1.0/latest.pt
-    action_input: action_anchor
-    action_anchor_path: safedrive_vla/assets/action_anchors.npz
-    rollout_steps: 5
-    projector_hidden: 256
 
 data:
   data_root: database/simlingo

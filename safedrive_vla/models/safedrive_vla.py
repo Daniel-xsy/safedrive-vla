@@ -174,7 +174,7 @@ class SafeDriveVLA(pl.LightningModule):
         self._target_points: Optional[Tensor] = None
         self._world_tokens: Optional[Tensor] = None
 
-        self.world_model_enabled = bool(world_model.get("enabled", False))
+        self.world_model_enabled = bool(world_model)
         self.dreamer: Optional[WorldModelDreamer] = None
         self.world_state_projector: Optional[WorldStateProjector] = None
         if self.world_model_enabled:

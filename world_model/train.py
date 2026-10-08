@@ -10,7 +10,7 @@ Recipe (V-JEPA 2-AC / DROID, with the CARLA-specific choices of the paper):
 Usage (single node, N GPUs)::
 
     torchrun --standalone --nproc_per_node=N -m world_model.train \\
-        --config world_model/configs/world_model_x0.5.yaml
+        --config world_model/configs/world_model.yaml
 
 Training resumes automatically from ``<work_dir>/latest.pt``.
 """
