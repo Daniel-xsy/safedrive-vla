@@ -27,6 +27,7 @@
 
 <a href=""><img src="https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat" alt="arXiv"></a>
 <a href="https://safedrive-vla.github.io/SafeDriveVLA/"><img src="https://img.shields.io/badge/Project-Page-1f72ff?style=flat" alt="Project Page"></a>
+<a href="https://huggingface.co/Danielxsy/safedrive-vla"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-ffd21e?style=flat" alt="Hugging Face"></a>
 <a href="https://www.corl.org/"><img src="https://img.shields.io/badge/CoRL-2026-8a2be2?style=flat" alt="CoRL 2026"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-2ea44f?style=flat" alt="License"></a>
 
@@ -167,7 +168,7 @@ Avg. is weighted by the number of instructions per meta-command and excludes spe
 - [x] Benchmark route files and generation toolkit
 - [x] Installation and data preparation guide
 - [ ] Getting-started guide for training and evaluation
-- [ ] Pretrained checkpoints
+- [x] Pretrained checkpoints
 - [ ] NavSim-C benchmark
 
 ## License

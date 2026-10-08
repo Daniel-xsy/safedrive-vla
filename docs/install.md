@@ -9,6 +9,7 @@ SafeDriveVLA
 ├── benchmark
 │   └── data                  # route files of the benchmarks (included)
 ├── ckpts
+│   ├── safedrive-vla         # released checkpoints (optional)
 │   └── vjepa2
 │       └── vitl.pt           # V-JEPA 2 ViT-L encoder
 └── database
@@ -59,6 +60,12 @@ The `carla` Python client is installed by `requirements.txt`, and the evaluation
 
   ```bash
   hf download OpenGVLab/InternVL3-1B-hf --revision 014c0583a0d4bedf29fbe2dbff4f865eb998e171
+  ```
+
+- **SafeDriveVLA checkpoints** ([Danielxsy/safedrive-vla](https://huggingface.co/Danielxsy/safedrive-vla)), trained on the full data: `safedrive_vla` (mode token and world model), the baselines `baseline_mode` and `baseline`, and the latent world model `world_model`. Each model folder holds `config.yaml` and `model.ckpt`.
+
+  ```bash
+  hf download Danielxsy/safedrive-vla --local-dir ckpts/safedrive-vla
   ```
 
 ### Data Preparation
