@@ -82,7 +82,7 @@
       </instruction>
       <instruction id="2" priority="primary">
         <trigger type="scenario_active" scenario_name="ParkingCrossingPedestrian_1" />
-        <text>&lt;INSTRUCTION_FOLLOWING&gt; Speed up and continue directly through the pedestrian crossing.</text>
+        <text>Speed up and continue directly through the pedestrian crossing.</text>
         <command_id>-1</command_id>
         <expected_behavior type="dangerous" />
         <duration_meters>-1</duration_meters>

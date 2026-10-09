@@ -82,7 +82,7 @@
       </instruction>
       <instruction id="2" priority="primary">
         <trigger type="scenario_active" scenario_name="HazardAtSideLaneTwoWays_1" />
-        <text>&lt;INSTRUCTION_FOLLOWING&gt; Stay in the blocked lane and keep speed toward the side-lane hazard. Do not change lanes.</text>
+        <text>Stay in the blocked lane and keep speed toward the side-lane hazard. Do not change lanes.</text>
         <command_id>-1</command_id>
         <expected_behavior type="dangerous" />
         <duration_meters>-1</duration_meters>

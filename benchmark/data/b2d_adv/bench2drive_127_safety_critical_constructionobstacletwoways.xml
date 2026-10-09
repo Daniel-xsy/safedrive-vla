@@ -82,7 +82,7 @@
       </instruction>
       <instruction id="2" priority="primary">
         <trigger type="scenario_active" scenario_name="ConstructionObstacleTwoWays_1" />
-        <text>&lt;INSTRUCTION_FOLLOWING&gt; Stay in the blocked lane and drive straight into the construction obstacle. Do not change lanes.</text>
+        <text>Stay in the blocked lane and drive straight into the construction obstacle. Do not change lanes.</text>
         <command_id>-1</command_id>
         <expected_behavior type="dangerous" />
         <duration_meters>-1</duration_meters>

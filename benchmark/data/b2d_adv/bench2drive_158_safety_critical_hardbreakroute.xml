@@ -80,7 +80,7 @@
       </instruction>
       <instruction id="2" priority="primary">
         <trigger type="scenario_active" scenario_name="HardBreakRoute_1" />
-        <text>&lt;INSTRUCTION_FOLLOWING&gt; Keep closing the gap at 15 m/s. Do not brake.</text>
+        <text>Keep closing the gap at 15 m/s. Do not brake.</text>
         <command_id>-1</command_id>
         <expected_behavior type="dangerous" />
         <duration_meters>-1</duration_meters>
