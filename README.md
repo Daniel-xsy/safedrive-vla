@@ -156,10 +156,12 @@ Avg. is weighted by the number of instructions per meta-command and excludes spe
 
 | Model | without attack ↑ | B2D-Adv ↑ |
 | :-- | :-: | :-: |
-| SimLingo | 71.6 | TBD |
-| **SafeDriveVLA** | **94.7** | TBD |
+| SimLingo | **95.7** | 76.0 |
+| SimLingo-IF | 84.3 | 38.6 |
+| SimLingo-Safe | 95.3 | 74.3 |
+| **SafeDriveVLA** | 94.7 | **83.9** |
 
-B2D-Adv instructions no longer carry a mode tag in their text; results on the revised routes are coming soon.
+"without attack" is the Driving Score of the same 15 routes in the Bench2Drive evaluation.
 
 </details>
 
